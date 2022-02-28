@@ -53,12 +53,13 @@ def find_sequence(a,x,y):
             max_value =  a[xI-nX][yI-nY+1]
             max_values.append(max_value)
             nX = nX+1
-        top.append(x[xI-nX])
-        bot.append(y[yI-nY])
-        max_value =  a[xI-nX][yI-nY]
-        max_values.append(max_value)
-        nX=nX+1
-        nY=nY+1
+        else:
+            top.append(x[xI-nX])
+            bot.append(y[yI-nY])
+            max_value =  a[xI-nX][yI-nY]
+            max_values.append(max_value)
+            nX=nX+1
+            nY=nY+1
        
     top.reverse()
     bot.reverse()
@@ -95,10 +96,10 @@ gap_cost=2
 
 '''
 
-x = "GACTTAC"	
-y = "CGTGAATTCAT"
-match_score=5 
-gap_cost=4
+x = "CAGACCTA"	
+y = "CCGTACTA"
+match_score=2 
+gap_cost=1
 '''
 
 a=gen_matrix(x,y,match_score,gap_cost)
