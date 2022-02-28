@@ -25,20 +25,46 @@ def print_matrix1(a,x,y):
             print("%2d" % a[i][j], end=' ')
         print()
         
-def find_max(a,x,y):
+def find_sequence(a,x,y):
     mrows = len(x)
     ncols = len(y)
     max_value = 0
     index = {}
+    #find max value
     for i in range(mrows+1):
         for j in range(ncols+1):
             if a[i][j] > 0 and a[i][j] > max_value:
                 max_value =  a[i][j]
                 index["i"] = i
                 index["j"] = j
-    print(max_value,index)
-    print(x[index["i"]-1])
-    print(y[index["j"]-1])
+    max_values=[]
+    max_values.append(max_value)
+    xI = index["i"]
+    yI = index["j"]
+    top = []
+    bot = []
+    nX = 1
+    nY = 1
+    #go to diagonals until letters are different
+    while max_value!=0:
+        if x[xI-nX] != y[yI-nY]:   
+            top.append(x[xI-nX])
+            bot.append("-")
+            max_value =  a[xI-nX][yI-nY+1]
+            max_values.append(max_value)
+            nX = nX+1
+        top.append(x[xI-nX])
+        bot.append(y[yI-nY])
+        max_value =  a[xI-nX][yI-nY]
+        max_values.append(max_value)
+        nX=nX+1
+        nY=nY+1
+       
+    top.reverse()
+    bot.reverse()
+    print(max_values)
+    print(*bot)
+    print(*top)
     
 def gen_matrix(x, y, match_score, gap_cost):
 	mrows = len(x)
@@ -79,4 +105,4 @@ a=gen_matrix(x,y,match_score,gap_cost)
 
 
 print_matrix1(a,x,y)
-find_max(a,x,y)
+find_sequence(a,x,y)
