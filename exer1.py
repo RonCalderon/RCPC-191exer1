@@ -24,7 +24,7 @@ def print_matrix1(a,x,y):
         for j in range(ncols+1):
             print("%2d" % a[i][j], end=' ')
         print()
-        
+    print()    
 def find_sequence(a,x,y):
     mrows = len(x)
     ncols = len(y)
@@ -63,8 +63,14 @@ def find_sequence(a,x,y):
        
     top.reverse()
     bot.reverse()
-    print(max_values)
+    #print(max_values)
     print(*bot)
+    for letter in bot:
+        if letter == "-":
+            print(" ",end=" ")
+        else:
+            print("|",end=" ")
+    print()
     print(*top)
     
 def gen_matrix(x, y, match_score, gap_cost):
@@ -97,7 +103,7 @@ gap_cost=2
 '''
 
 x = "CAGACCTA"	
-y = "CCGTACTA"
+y = "CCGTACT"
 match_score=2 
 gap_cost=1
 '''
